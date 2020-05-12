@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordViewHolder> {
     private LinkedList<Word> mWords;
@@ -34,9 +35,17 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordViewHolder
         holder.itemTextView.setText(currentWord.getText());
     }
 
+    public void setNote(LinkedList<Word> notes){
+        mWords = notes;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
-        return mWords.size();
+        if(mWords != null){
+            return mWords.size();
+        }
+       return 0;
     }
 
     public class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
