@@ -19,7 +19,7 @@ import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
-    private LinkedList<String> mWordList;
+    private LinkedList<Word> mWordList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         mWordList = new LinkedList<>();
         for(int i = 0; i < 20; i ++){
-            mWordList.addLast("Hey" + i);
+            mWordList.addLast(new Word("Hello" + i));
         }
 
 

@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.LinkedList;
 
 public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordViewHolder> {
-    private LinkedList<String> mWords;
+    private LinkedList<Word> mWords;
     private LayoutInflater mInflater;
 
-    public WordAdapter(Context context, LinkedList<String> words){
+    public WordAdapter(Context context, LinkedList<Word> words){
         mInflater = LayoutInflater.from(context);
         this.mWords = words;
     }
@@ -30,8 +30,8 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull WordViewHolder holder, int position) {
-        String currentWord = mWords.get(position);
-        holder.itemTextView.setText(currentWord);
+        Word currentWord = mWords.get(position);
+        holder.itemTextView.setText(currentWord.getText());
     }
 
     @Override
