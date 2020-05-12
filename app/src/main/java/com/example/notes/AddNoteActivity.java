@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class AddNoteActivity extends AppCompatActivity {
@@ -14,6 +16,16 @@ public class AddNoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
+
+        Spinner spinner = (Spinner) findViewById(R.id.bottomSpinner);
+        String[] spinnerItems = new String[]{
+          "One", "Two", "Three", "Four"
+        };
+
+        ArrayAdapter<String> mAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_dropdown_item, spinnerItems);
+        spinner.setAdapter(mAdapter);
+
     }
 
     @Override

@@ -11,4 +11,15 @@
         android:hint="Type Note"
         android:id="@+id/add_new_note_edit_text"/>
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/bottomSpinner"
+            android:spinnerMode="dropdown"/>
+    </androidx.appcompat.widget.Toolbar>
+
 </LinearLayout>
