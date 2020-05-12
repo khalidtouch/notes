@@ -39,7 +39,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordViewHolder
         return mWords.size();
     }
 
-    public static class WordViewHolder extends RecyclerView.ViewHolder{
+    public class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView itemTextView;
         private WordAdapter mWordAdapter;
 
@@ -47,6 +47,14 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordViewHolder
             super(itemView);
             this.mWordAdapter = adapter;
             itemTextView = itemView.findViewById(R.id.item_text_view);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int mPosition = getLayoutPosition();
+            // make adjustment when clicked
+            Word clickedWord = mWords.get(mPosition);
+
         }
     }
 }

@@ -7,6 +7,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
         WordAdapter mWordAdapter = new WordAdapter(this, mWordList);
         mRecyclerView.setAdapter(mWordAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        DividerItemDecoration mDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
+                new LinearLayoutManager(this).getOrientation());
+        mRecyclerView.addItemDecoration(mDecoration);
     }
 
     @Override
