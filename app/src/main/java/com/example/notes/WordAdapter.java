@@ -1,5 +1,8 @@
 package com.example.notes;
 
+import android.content.Context;
+import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -7,23 +10,33 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordViewHolder> {
+import java.util.LinkedList;
 
+public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordViewHolder> {
+    private LinkedList<String> mWords;
+    private LayoutInflater mInflater;
+
+    public WordAdapter(Context context, LinkedList<String> words){
+        mInflater = LayoutInflater.from(context);
+        this.mWords = words;
+    }
 
     @NonNull
     @Override
     public WordViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View itemView = mInflater.inflate(R.layout.item_layout, parent, false);
+        return new WordViewHolder(itemView, this);
     }
 
     @Override
     public void onBindViewHolder(@NonNull WordViewHolder holder, int position) {
-
+        String currentWord = mWords.get(position);
+        holder.itemTextView.setText(currentWord);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mWords.size();
     }
 
     public static class WordViewHolder extends RecyclerView.ViewHolder{

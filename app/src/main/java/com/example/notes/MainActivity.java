@@ -7,12 +7,19 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.LinkedList;
+
 public class MainActivity extends AppCompatActivity {
+    private RecyclerView mRecyclerView;
+    private LinkedList<String> mWordList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +36,18 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        mWordList = new LinkedList<>();
+        for(int i = 0; i < 20; i ++){
+            mWordList.addLast("Hey" + i);
+        }
+
+
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.main_recycler_view);
+        WordAdapter mWordAdapter = new WordAdapter(this, mWordList);
+        mRecyclerView.setAdapter(mWordAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
